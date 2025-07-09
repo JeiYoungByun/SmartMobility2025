@@ -1,0 +1,23 @@
+<launch>
+    <!-- USBカメラノードの起動 -->
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen">
+        <param name="video_device" value="/dev/video0"/>
+        <param name="image_width" value="640"/>
+        <param name="image_height" value="480"/>
+        <param name="pixel_format" value="yuyv"/>
+        <param name="camera_frame_id" value="usb_cam"/>
+        <param name="io_method" value="mmap"/>
+    </node>
+
+    <!-- RPLiDARノードの起動 -->
+    <node name="rplidar" pkg="rplidar_ros" type="rplidarNode" output="screen">
+        <param name="serial_port" value="/dev/ttyUSB0"/>
+        <param name="serial_baudrate" value="115200"/>
+        <param name="frame_id" value="laser"/>
+        <param name="inverted" value="false"/>
+        <param name="angle_compensate" value="true"/>
+    </node>
+
+    <!-- 自動運転のメインノード起動 -->
+    <node name="auto_drive" pkg="xycar_pkg" type="main.py" output="screen" />
+</launch>
