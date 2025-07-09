@@ -76,8 +76,7 @@ source devel/setup.bash
 
 ```bash
 roscore
-roslaunch xycar_pkg xycar_auto_drive.launch  # センサー起動
-rosrun <パッケージ名> main.py       # 自動運転ノード起動
+roslaunch xycar_pkg xycar_auto_drive.launch  
 ```
 
 ---
